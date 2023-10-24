@@ -34,36 +34,70 @@ class FormularioConCheckBox extends Component {
   render() {
     return (
       <ScrollView>
-        <View style={{ padding: 20 }}>
-          <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10 }}>
-            Peligros y riesgos de trabajo
+         <Text style={{ fontSize: 22,
+            fontWeight: 'bold',
+            backgroundColor: 'orange',
+            padding: 10,
+            textAlign: 'center',}}>
+            Requisitos para ingresar a espacios confinados
+          </Text>
+        <View style={{ padding: 10}}>
+          <Text style={styles.titulo }>
+            ¿Fuentes de energías aisladas? .
           </Text>
           <View style={styles.checkboxGroup}>
-            <Text style={styles.checkboxTitle}>¿Fuentes de energías aisladas?</Text>
-            <View style={styles.checkboxContainer}>
-              <CheckBox
-                title="Si"
-                checked={this.state.checkbox1}
-                containerStyle={styles.checkbox}
-                textStyle={styles.checkboxText}
-                onPress={() => this.setState({ checkbox1: !this.state.checkbox1 })}
-              />
-              <CheckBox
-                title="No"
-                checked={this.state.checkbox2}
-                containerStyle={styles.checkbox}
-                textStyle={styles.checkboxText}
-                onPress={() => this.setState({ checkbox2: !this.state.checkbox2 })}
-              />
-              <CheckBox
-                title="Na"
-                checked={this.state.checkbox3}
-                containerStyle={styles.checkbox}
-                textStyle={styles.checkboxText}
-                onPress={() => this.setState({ checkbox3: !this.state.checkbox3 })}
-              />
-            </View>
+            <CheckBox
+              title="Si"
+              checked={this.state.checkbox1}
+              containerStyle={styles.checkbox}
+              textStyle={styles.checkboxText}
+              onPress={() => this.setState({ checkbox1: !this.state.checkbox1 })}
+            />
+            <CheckBox
+              title="No"
+              checked={this.state.checkbox2}
+              containerStyle={styles.checkbox}
+              textStyle={styles.checkboxText}
+              onPress={() => this.setState({ checkbox2: !this.state.checkbox2 })}
+            />
+            <CheckBox
+              title="Na"
+              checked={this.state.checkbox3}
+              containerStyle={styles.checkbox}
+              textStyle={styles.checkboxText}
+              onPress={() => this.setState({ checkbox3: !this.state.checkbox3 })}
+            />
+            
           </View>
+          <Text style={styles.titulo }>
+          ¿Estan la entradas y salidas de fluidos con aislamieno positivo? .
+          </Text>
+          <View style={styles.checkboxGroup}>
+            <CheckBox
+              title="Si"
+              checked={this.state.checkbox1}
+              containerStyle={styles.checkbox}
+              textStyle={styles.checkboxText}
+              onPress={() => this.setState({ checkbox1: !this.state.checkbox1 })}
+            />
+            <CheckBox
+              title="No"
+              checked={this.state.checkbox2}
+              containerStyle={styles.checkbox}
+              textStyle={styles.checkboxText}
+              onPress={() => this.setState({ checkbox2: !this.state.checkbox2 })}
+            />
+            <CheckBox
+              title="Na"
+              checked={this.state.checkbox3}
+              containerStyle={styles.checkbox}
+              textStyle={styles.checkboxText}
+              onPress={() => this.setState({ checkbox3: !this.state.checkbox3 })}
+            />
+            
+          </View>
+
+          
           {/* Agrega más grupos de casillas de verificación según sea necesario */}
           <Button
             title="Enviar"
@@ -78,30 +112,24 @@ class FormularioConCheckBox extends Component {
 const styles = StyleSheet.create({
   checkboxGroup: {
     marginBottom: 10,
-    flexDirection: 'row', // Colocar título y checkboxes en una fila
+    flexDirection: 'row', // Colocar las casillas de verificación en una fila
     alignItems: 'center', // Centrar verticalmente
   },
-  checkboxTitle: {
-    fontWeight: 'bold',
-    fontSize: 13,
-    marginRight: 10, // Espacio entre título y checkboxes
-  },
-  checkboxContainer: {
-    backgroundColor: "transparent",
-    flexDirection: 'row', // Colocar checkboxes en una fila
-    alignItems: 'center', // Centrar verticalmente los checkboxes
-    marginLeft: -20, // Ajusta este valor para modificar el espacio entre los checkboxes
-  },
   checkbox: {
-    backgroundColor:"trasnparent",
+    backgroundColor: "transparent",
     border: "none",
-    marginRight:-8,
-    width: 60, // Ajustar el ancho del contenedor de checkbox
+    width: 110, // Ajustar el ancho del contenedor de checkbox
   },
   checkboxText: {
-    marginLeft:1,
-    fontSize: 12, // Tamaño de texto más pequeño
+    marginLeft: 5,
+    fontSize: 16, // Tamaño de texto más pequeño
   },
+  titulo:{
+    fontSize: 17, 
+    fontWeight: 'bold', 
+    marginBottom: 10, 
+    textAlign: 'center' 
+  }
 });
 
 export default FormularioConCheckBox;
