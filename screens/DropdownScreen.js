@@ -7,8 +7,9 @@ import React, { useState } from "react";
 const DropdownScreen = () => {
   const navigation = useNavigation();
   const options = [
-    { label: 'Opción 1', value: 'Formulario1Screen' }
-  
+    { label: 'Permiso de trabajo en frio.', value: 'Formulario1Screen' },
+    { label: 'Permiso de trabajo en caliente.', value: 'Formulario2Screen' },
+    { label: 'Permiso de trabajo en espacio confinado.', value: 'Formulario3Screen' }
   ];
   const [selectedOption, setSelectedOption] = useState(options[0].value);
 
@@ -25,7 +26,7 @@ const DropdownScreen = () => {
       <Picker
         selectedValue={selectedOption}
         onValueChange={(itemValue) => setSelectedOption(itemValue)}
-        style={{ width: 200 }}
+        style={{ width: 400 }}
       >
         {options.map((option) => (
           <Picker.Item key={option.value} label={option.label} value={option.value} />
