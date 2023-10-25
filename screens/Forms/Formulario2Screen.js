@@ -31,7 +31,9 @@ class FormularioConCheckBox extends Component {
             fontWeight: 'bold',
             backgroundColor: 'red',
             padding: 10,
-            textAlign: 'center',}}>
+            textAlign: 'center',
+            color: 'white' ,
+            }}>
             Peligros y riesgos de trabajo
           </Text>
           <CheckBox
@@ -83,7 +85,9 @@ class FormularioConCheckBox extends Component {
             fontWeight: 'bold',
             backgroundColor: 'green',
             padding: 10,
-            textAlign: 'center',}}>
+            textAlign: 'center',
+            color: 'white' ,
+            }}>
             Precauciones a tomar
           </Text>
           <CheckBox
