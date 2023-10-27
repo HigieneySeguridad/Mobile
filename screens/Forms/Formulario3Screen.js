@@ -79,6 +79,7 @@ class FormularioConCheckBox extends Component {
             }}>
             Requisitos para ingresar a espacios confinados
           </Text>
+          <View style={styles.ConteinerDatos}>
           <Text style={styles.titulo }>
             ¿Fuentes de energías aisladas? .
           </Text>
@@ -104,8 +105,9 @@ class FormularioConCheckBox extends Component {
               textStyle={styles.checkboxText}
               onPress={() => this.setState({ checkbox40: !this.state.checkbox40 })}
             />
-            
           </View>
+          </View>
+          <View style={styles.ConteinerDatos}>
           <Text style={styles.titulo }>
           ¿Estan la entradas y salidas de fluidos con aislamiento positivo? .
           </Text>
@@ -132,6 +134,8 @@ class FormularioConCheckBox extends Component {
               onPress={() => this.setState({ checkbox43: !this.state.checkbox43 })}
             />
              </View>
+             </View>
+             <View style={styles.ConteinerDatos}>
           <Text style={styles.titulo }>
           ¿Se cuenta con elemento de iluminación para atmósfera explosiva? .
           </Text>
@@ -158,6 +162,8 @@ class FormularioConCheckBox extends Component {
               onPress={() => this.setState({ checkbox46: !this.state.checkbox46 })}
             />
              </View>
+             </View>
+            <View style={styles.ConteinerDatos}>
           <Text style={styles.titulo }>
           ¿Se cuenta con elemento de ventilación forzada? .
           </Text>
@@ -184,6 +190,8 @@ class FormularioConCheckBox extends Component {
               onPress={() => this.setState({ checkbox49: !this.state.checkbox49 })}
             />
              </View>
+             </View>
+            <View style={styles.ConteinerDatos}>
           <Text style={styles.titulo }>
           ¿Se requiere protección respiratoria? .
           </Text>
@@ -210,6 +218,8 @@ class FormularioConCheckBox extends Component {
               onPress={() => this.setState({ checkbox52: !this.state.checkbox52 })}
             />
              </View>
+             </View> 
+            <View style={styles.ConteinerDatos}>
           <Text style={styles.titulo }>
           ¿Elementos de rescate? .
           </Text>
@@ -236,6 +246,8 @@ class FormularioConCheckBox extends Component {
               onPress={() => this.setState({ checkbox55: !this.state.checkbox55 })}
             />
              </View>
+             </View>
+            <View style={styles.ConteinerDatos}>
           <Text style={styles.titulo }>
           ¿Elementos de rescate? .
           </Text>
@@ -262,6 +274,8 @@ class FormularioConCheckBox extends Component {
               onPress={() => this.setState({ checkbox58: !this.state.checkbox58 })}
             />
              </View>
+             </View>
+            <View style={styles.ConteinerDatos}>
           <Text style={styles.titulo }>
           ¿Hay personal de relevo para quien/es entra/an? .
           </Text>
@@ -288,6 +302,8 @@ class FormularioConCheckBox extends Component {
               onPress={() => this.setState({ checkbox61: !this.state.checkbox61 })}
             />
              </View>
+             </View>  
+            <View style={styles.ConteinerDatos}>
           <Text style={styles.titulo }>
           ¿Evaluación de riesgo para el ingreso? .
           </Text>
@@ -314,12 +330,13 @@ class FormularioConCheckBox extends Component {
               onPress={() => this.setState({ checkbox64: !this.state.checkbox64 })}
             />
           </View>
-          {/* Agrega más grupos de casillas de verificación según sea necesario */}
-          <Button
+          </View>
+          { <Button
             title="Enviar"
             onPress={this.handleSubmit}
           />
-        </View>
+          }
+          </View>
       </ScrollView>
     );
   }
@@ -332,20 +349,33 @@ const styles = StyleSheet.create({
     alignItems: 'center', // Centrar verticalmente
   },
   checkbox: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
     border: "none",
     width: 110, // Ajustar el ancho del contenedor de checkbox
   },
   checkboxText: {
     marginLeft: 5,
     fontSize: 16, // Tamaño de texto más pequeño
+    color: '#40AAE5',
   },
   titulo:{
     fontSize: 17, 
     fontWeight: 'bold', 
     marginBottom: 10, 
-    textAlign: 'center' 
+    textAlign: 'center',
+    color: '#40AAE5', 
+  },
+   ConteinerDatos: {
+    borderRadius: 5,
+    borderColor: 'black',
+    borderWidth: 1,
+    padding: 10,
+    marginTop: 10,
+    marginBottom: 5,
   }
 });
 
-export default FormularioConCheckBox;
+export default FormularioConCheckBox; 
+
+

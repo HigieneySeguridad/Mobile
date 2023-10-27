@@ -9,7 +9,8 @@ const DropdownScreen = () => {
   const options = [
     { label: 'Permiso de trabajo en frio.', value: 'Formulario1Screen' },
     { label: 'Permiso de trabajo en caliente.', value: 'Formulario2Screen' },
-    { label: 'Permiso de trabajo en espacio confinado.', value: 'Formulario3Screen' }
+    { label: 'Permiso de trabajo en espacio confinado.', value: 'Formulario3Screen' },
+    { label: 'Prueba de atmosfera.', value: 'Formulario4Screen' },
   ];
   const [selectedOption, setSelectedOption] = useState(options[0].value);
 

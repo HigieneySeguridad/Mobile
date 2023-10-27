@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/* import React, { useState } from "react";
 import {  View,  TextInput } from "react-native";
 import { styles } from "./LoginStyle";
 import Boton from "../../components/boton"
@@ -27,7 +27,7 @@ const Login = () => {
             password
         }
 
-        const respuesta = await fetch('http://192.168.0.181:3000/login', {
+        const respuesta = await fetch('http://192.168.137.1:3000/login', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -94,9 +94,9 @@ const Login = () => {
     
     
 }
-export default Login;
+export default Login; */
 
-/* import React, { useState } from "react";
+import React, { useState } from "react";
 import {  View,  TextInput } from "react-native";
 import { styles } from "./LoginStyle";
 import Boton from "../../components/boton"
@@ -152,4 +152,4 @@ const Login = () => {
     
     
 }
-export default Login; */
+export default Login;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View, Text, StyleSheet } from 'react-native';
 import { CheckBox, Button } from 'react-native-elements';
 
 class FormularioConCheckBox extends Component {
@@ -26,7 +26,7 @@ class FormularioConCheckBox extends Component {
   render() {
     return (
       <ScrollView>
-        <View style={{ padding: 20 }}>
+        <View style={{ padding: 20}}>
           <Text style={{ fontSize: 25,
             fontWeight: 'bold',
             backgroundColor: 'red',
@@ -36,6 +36,7 @@ class FormularioConCheckBox extends Component {
             }}>
             Peligros y riesgos de trabajo
           </Text>
+          <View style={styles.CheckBoxCont}>
           <CheckBox
             title="LLama abierta o arco."
             checked={this.state.checkbox21}
@@ -81,6 +82,7 @@ class FormularioConCheckBox extends Component {
             checked={this.state.checkbox29}
             onPress={() => this.setState({ checkbox29: !this.state.checkbox29 })}
           />
+          </View>
            <Text style={{ fontSize: 25,
             fontWeight: 'bold',
             backgroundColor: 'green',
@@ -90,6 +92,7 @@ class FormularioConCheckBox extends Component {
             }}>
             Precauciones a tomar
           </Text>
+          <View style={styles.CheckBoxCont}>
           <CheckBox
           title="LLenar equipo con agua."
             checked={this.state.checkbox30}
@@ -135,9 +138,17 @@ class FormularioConCheckBox extends Component {
           onPress={this.handleSubmit}
         />
         </View>
+        </View>
       </ScrollView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  CheckBoxCont: {
+    width: 394 ,
+    marginLeft: -10 ,
+  }
+});
 
 export default FormularioConCheckBox;
