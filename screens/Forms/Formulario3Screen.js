@@ -69,14 +69,8 @@ class FormularioConCheckBox extends Component {
   render() {
     return (
       <ScrollView>
-        <View style={{ padding: 10}}>
-         <Text style={{ fontSize: 22,
-            fontWeight: 'bold',
-            backgroundColor: 'orange',
-            padding: 10,
-            textAlign: 'center',
-            color: 'white' ,
-            }}>
+        <View style={styles.contenedor}>
+         <Text style={styles.titulogrande}>
             Requisitos para ingresar a espacios confinados
           </Text>
           <View style={styles.ConteinerDatos}>
@@ -373,7 +367,18 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 10,
     marginBottom: 5,
-  }
+  },
+  contenedor:{
+    padding: 10,
+  },
+  titulogrande:{
+    fontSize: 22,
+    fontWeight: 'bold',
+    backgroundColor: 'orange',
+    padding: 10,
+    textAlign: 'center',
+    color: 'white' ,
+  },
 });
 
 export default FormularioConCheckBox; 

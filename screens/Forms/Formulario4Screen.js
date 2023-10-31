@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, Button } from 'react-native';
+import { Text, View, TextInput, Button, StyleSheet } from 'react-native';
 
 function Formulario() {
   const [hora, setHora] = useState('');
@@ -17,32 +17,32 @@ function Formulario() {
   };
 
   return (
-    <View style={{padding: 10}}>
-      <Text style={{textAlign: 'center', fontSize: 20}}> Hora </Text>
+    <View style={styles.contenedor}>
+      <Text style={styles.titulo}> Hora </Text>
       <TextInput
         placeholder="Hora"
         value={hora}
         onChangeText={(text) => setHora(text)}
       />
-      <Text style={{textAlign: 'center', fontSize: 20}}> Oxígeno 19.5-22.5% </Text>
+      <Text style={styles.titulo}> Oxígeno 19.5-22.5% </Text>
       <TextInput
         placeholder="Oxígeno"
         value={oxigeno}
         onChangeText={(text) => setOxigeno(text)}
       />
-      <Text style={{textAlign: 'center', fontSize: 22}}> Combustible LEL .0% </Text>
+      <Text style={styles.titulo}> Combustible LEL .0% </Text>
       <TextInput
         placeholder="Combustible"
         value={combustible}
         onChangeText={(text) => setCombustible(text)}
       />
-      <Text style={{textAlign: 'center', fontSize: 22}}> H2S </Text>
+      <Text style={styles.titulo}> H2S </Text>
       <TextInput
         placeholder="H2S"
         value={h2s}
         onChangeText={(text) => setH2s(text)}
       />
-      <Text style={{textAlign: 'center', fontSize: 22}}> Otro </Text>
+      <Text style={styles.titulo}> Otro </Text>
       <TextInput
         placeholder="Otro"
         value={otro}
@@ -54,3 +54,14 @@ function Formulario() {
 }
 
 export default Formulario;
+
+
+const styles = StyleSheet.create({
+  titulo:{
+    textAlign: 'center',
+    fontSize: 22,
+  },
+  contenedor:{
+    padding: 10,
+  },
+})

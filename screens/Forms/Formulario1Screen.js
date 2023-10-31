@@ -54,14 +54,8 @@ class FormularioConCheckBox extends Component {
   render() {
     return (
       <ScrollView>
-        <View style={{ padding: 20}}>
-          <Text style={{ fontSize: 25,
-            fontWeight: 'bold',
-            backgroundColor: 'red',
-            padding: 10,
-            textAlign: 'center',
-            color: 'white',
-            }}>
+        <View style={styles.contendor}>
+          <Text style={styles.titulogrande1}>
             Peligros y riesgos de trabajo
           </Text>
           <View style={styles.CheckBoxCont}>
@@ -116,13 +110,7 @@ class FormularioConCheckBox extends Component {
             onPress={() => this.setState({ checkbox10: !this.state.checkbox10 })}
           />
           </View>
-           <Text style={{ fontSize: 25,
-            fontWeight: 'bold',
-            backgroundColor: 'green',
-            padding: 10,
-            textAlign: 'center',
-            color: 'white',
-            }}>
+           <Text style={styles.titulogrande2}>
             Precauciones a tomar
           </Text>
           <View style={styles.CheckBoxCont}>
@@ -191,6 +179,25 @@ const styles = StyleSheet.create({
   CheckBoxCont: {
     width: 394 ,
     marginLeft: -10,
+  },
+  titulogrande1:{
+    fontSize: 25,
+    fontWeight: 'bold',
+    backgroundColor: 'red',
+    padding: 10,
+    textAlign: 'center',
+    color: 'white',
+  },
+  titulogrande2:{
+    fontSize: 25,
+    fontWeight: 'bold',
+    backgroundColor: 'green',
+    padding: 10,
+    textAlign: 'center',
+    color: 'white',
+  },
+  contendor:{
+    padding: 10,
   }
 });
 
