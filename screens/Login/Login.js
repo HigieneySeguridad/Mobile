@@ -1,155 +1,212 @@
-/* import React, { useState } from "react";
-import {  View,  TextInput } from "react-native";
-import { styles } from "./LoginStyle";
-import Boton from "../../components/boton"
-import { useNavigation } from "@react-navigation/native";
-import { ALERT_TYPE, Dialog} from 'react-native-alert-notification';
+/* 
+import React from 'react';
+import { Button, Text, TextInput } from 'react-native';
+import { useUserContext } from '../../context/UserContext';
+import { useNavigation } from '@react-navigation/native';
+import { ALERT_TYPE, Dialog } from 'react-native-alert-notification';
+import { Input,Container } from './LoginStyles'; // Asegúrate de importar los estilos
+import Boton from '../../components/boton';
 
-const Login = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const navigation = useNavigation();
+export default function Login() {
+  const { setUser } = useUserContext();
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const navigation = useNavigation();
 
-    const Ingresar = async (e) => {
-        e.preventDefault();
-
-        if(username.trim()=== "" || password.trim()=== ""){
-            Dialog.show({
-                type: ALERT_TYPE.DANGER,
-                title: "Error",
-                textBody: "Debe completar todos los campos",
-                button: "Aceptar",
-                closeOnOverlayTap: true,
-                });
-            }
-        const iniciarSesion = {
-            username,
-            password
-        }
-
-        const respuesta = await fetch('http://192.168.137.1:3000/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(iniciarSesion),
-          });
-        
-          if (respuesta.status === 200) {
-            Dialog.show({
-                type: ALERT_TYPE.SUCCESS,
-                title: "Correcto",
-                textBody: "Iniciaste sesion",
-                button: "Aceptar",
-                closeOnOverlayTap: true,
-                });
-            navigation.navigate("Home")// Redirigir al usuario solo cuando las credenciales son válidas
-          } 
-    
-          if (respuesta.status ===401){
-            Dialog.show({
-                type: ALERT_TYPE.DANGER,
-                title: "ERROR",
-                textBody: "REVISE LOS CAMPOS",
-                button: "Aceptar",
-                closeOnOverlayTap: true,
-                });
-           console.log(await respuesta.json())
-          } 
-          if (respuesta.status === 429){
-            Dialog.show({
-                type: ALERT_TYPE.WARNING,
-                title: "ESPERE",
-                textBody: "Espere 1 minuto para realizar mas intentos",
-                button: "Aceptar",
-                closeOnOverlayTap: true,
-                });
-            console.log(await respuesta.text())
-          }
-
+  const Ingresar = async () => {
+    if (username.trim() === '' || password.trim() === '') {
+      Dialog.show({
+        type: ALERT_TYPE.DANGER,
+        title: 'Error',
+        textBody: 'Debe completar todos los campos',
+        button: 'Aceptar',
+        closeOnOverlayTap: true,
+      });
+      return;
     }
-    
-    return (
-        <View style={styles.container}>
-            <TextInput 
-            style={styles.input}
-            placeholder="Usuario"
-            placeholderTextColor={"#AAAAAA"}
-            onChangeText={setUsername}
-            value={username}
-            
-            />
-            <TextInput
-            style={styles.input}
-            placeholder="Contraseña"
-            placeholderTextColor={"#AAAAAA"}
-            onChangeText={setPassword}
-            value={password}
-            
-            />
-            <Boton text="Ingresar" apretame={Ingresar} />
-         
-        </View>
-        )
-    
-    
+
+    const iniciarSesion = {
+      username,
+      password,
+    };
+
+    const respuesta = await fetch('http://192.168.0.89:3001/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(iniciarSesion),
+    });
+
+    if (respuesta.status === 200) {
+      const userData = await respuesta.json();
+
+      console.log(userData);
+      // Realiza la autenticación y llama a setUser con la información del usuario
+      setUser(userData);
+
+      Dialog.show({
+        type: ALERT_TYPE.SUCCESS,
+        title: 'Correcto',
+        textBody: 'Iniciaste sesión',
+        button: 'Aceptar',
+        closeOnOverlayTap: true,
+      });
+
+      // Redirige al usuario según su rol
+      if (userData.role === 'Operario') {
+        navigation.navigate('OperarioScreen');
+      } else if (userData.role === 'admin') {
+        navigation.navigate('AdminDashboard');
+      }
+    } else if (respuesta.status === 401) {
+      Dialog.show({
+        type: ALERT_TYPE.DANGER,
+        title: 'ERROR',
+        textBody: 'REVISE LOS CAMPOS',
+        button: 'Aceptar',
+        closeOnOverlayTap: true,
+      });
+
+      console.log(await respuesta.json());
+    } else if (respuesta.status === 429) {
+      Dialog.show({
+        type: ALERT_TYPE.WARNING,
+        title: 'ESPERE',
+        textBody: 'Espere 1 minuto para realizar más intentos',
+        button: 'Aceptar',
+        closeOnOverlayTap: true,
+      });
+
+      console.log(await respuesta.text());
+    }
+  }
+
+  return (
+    <Container>
+      <Input
+        placeholder="Usuario"
+        placeholderTextColor="#AAAAAA"
+        onChangeText={setUsername}
+        value={username}
+      />
+      <Input
+        placeholder="Contraseña"
+        placeholderTextColor="#AAAAAA"
+        onChangeText={setPassword}
+        value={password}
+      />
+      <Button
+        title="Iniciar sesión"
+        onPress={Ingresar}
+      />
+    </Container>
+  );
 }
-export default Login; */
+ */
 
-import React, { useState } from "react";
-import {  View,  TextInput } from "react-native";
-import { styles } from "./LoginStyle";
-import Boton from "../../components/boton"
-import { ALERT_TYPE, Dialog} from 'react-native-alert-notification';
-import { useNavigation } from "@react-navigation/native";
+import React from 'react';
+import { Button, TextInput, View } from 'react-native';
+import { useUserContext } from '../../context/UserContext';
+import { useNavigation } from '@react-navigation/native';
+import { ALERT_TYPE, Dialog } from 'react-native-alert-notification';
+import { styles } from './LoginStyles'; // Importa el objeto de estilos
 
-const Login = () => {
-    const [usuario, setUsuario] = useState("");
-    const [password, setPassword] = useState("");
-    const navigation = useNavigation();
+export default function Login() {
+  const { setUser } = useUserContext();
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const navigation = useNavigation();
 
-
-    const Ingresar = () => {
-        if(usuario.trim()=== "" || password.trim()=== ""){
-            Dialog.show({
-                type: ALERT_TYPE.DANGER,
-                title: "Error",
-                textBody: "Debe completar todos los campos",
-                button: "Aceptar",
-                closeOnOverlayTap: true,
-                });
-
-    } else {
-
-        navigation.navigate("Home");
+  const Ingresar = async () => {
+    if (username.trim() === '' || password.trim() === '') {
+      Dialog.show({
+        type: ALERT_TYPE.DANGER,
+        title: 'Error',
+        textBody: 'Debe completar todos los campos',
+        button: 'Aceptar',
+        closeOnOverlayTap: true,
+      });
+      return;
     }
-           
 
+    const iniciarSesion = {
+      username,
+      password,
+    };
+
+    const respuesta = await fetch('http://192.168.0.89:3001/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(iniciarSesion),
+    });
+
+    if (respuesta.status === 200) {
+      const userData = await respuesta.json();
+
+      console.log(userData);
+      // Realiza la autenticación y llama a setUser con la información del usuario
+      setUser(userData);
+
+      Dialog.show({
+        type: ALERT_TYPE.SUCCESS,
+        title: 'Correcto',
+        textBody: 'Iniciaste sesión',
+        button: 'Aceptar',
+        closeOnOverlayTap: true,
+      });
+
+      // Redirige al usuario según su rol
+      if (userData.role === 'Operario') {
+        navigation.navigate('OperarioScreen');
+      } else if (userData.role === 'admin') {
+        navigation.navigate('AdminDashboard');
+      }
+    } else if (respuesta.status === 401) {
+      Dialog.show({
+        type: ALERT_TYPE.DANGER,
+        title: 'ERROR',
+        textBody: 'REVISE LOS CAMPOS',
+        button: 'Aceptar',
+        closeOnOverlayTap: true,
+      });
+
+      console.log(await respuesta.json());
+    } else if (respuesta.status === 429) {
+      Dialog.show({
+        type: ALERT_TYPE.WARNING,
+        title: 'ESPERE',
+        textBody: 'Espere 1 minuto para realizar más intentos',
+        button: 'Aceptar',
+        closeOnOverlayTap: true,
+      });
+
+      console.log(await respuesta.text());
     }
-    
-    return (
-        <View style={styles.container}>
-            <TextInput 
-            style={styles.input}
-            placeholder="Usuario"
-            placeholderTextColor={"#AAAAAA"}
-            onChangeText={setUsuario}
-            value={usuario}
-            
-            />
-            <TextInput
-            style={styles.input}
-            placeholder="Contraseña"
-            placeholderTextColor={"#AAAAAA"}
-            onChangeText={setPassword}
-            value={password}
-            
-            />
-            <Boton text="Ingresar" apretame={Ingresar} />
-         
-        </View>
-        )
-    
-    
+  }
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Usuario"
+        placeholderTextColor="#AAAAAA"
+        onChangeText={setUsername}
+        value={username}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Contraseña"
+        placeholderTextColor="#AAAAAA"
+        onChangeText={setPassword}
+        value={password}
+      />
+      <Button
+        title="Iniciar sesión"
+        onPress={Ingresar}
+      />
+    </View>
+  );
 }
-export default Login;

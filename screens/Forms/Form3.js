@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ScrollView, View, Text, StyleSheet } from 'react-native';
 import { CheckBox, Button } from 'react-native-elements';
 
-class FormularioConCheckBox extends Component {
+class Form3 extends Component {
   state = {
     checkbox38: false,
     checkbox39: false,
@@ -381,6 +381,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FormularioConCheckBox; 
-
+export default Form3; 
 

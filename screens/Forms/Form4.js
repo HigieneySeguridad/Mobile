@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, TextInput, Button, StyleSheet } from 'react-native';
 
-function Formulario() {
+function Form4() {
   const [hora, setHora] = useState('');
   const [oxigeno, setOxigeno] = useState('');
   const [combustible, setCombustible] = useState('');
@@ -235,7 +235,7 @@ function Formulario() {
   );
 }
 
-export default Formulario;
+export default Form4;
 
 const styles = StyleSheet.create({
   titulo: {
