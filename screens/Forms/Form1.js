@@ -198,6 +198,7 @@ const styles = StyleSheet.create({
   },
   contendor:{
     padding: 10,
+    top: 35,
   }
 });
 

@@ -35,31 +35,37 @@ export default function Home({ navigation }) {
  
  */
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image, } from 'react-native';
 import { useUserContext } from '../../context/UserContext';
 import LogoutButton from '../../components/LogoutButton';
 import Boton from '../../components/boton';
-import { OperarioStyles } from './OperarioStyles';
+import { styles } from './OperarioStyles';
 
 export default function Home({ navigation }) {
   const { user } = useUserContext();
 
   if (!user || user.role !== 'Operario') {
     return (
-      <View style={OperarioStyles.container}>
+      <View style={styles.container}>
         <Text>No tienes permisos para acceder a esta página.</Text>
       </View>
     );
   }
 
   return (
-    <View style={OperarioStyles.container}>
-      <View style={OperarioStyles.header}>
-        <Text style={OperarioStyles.headerText}>¡Bienvenido Operario, {user.nombre}!</Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>¡Bienvenido Operario, {user.nombre}!</Text>
       </View>
-      <View style={OperarioStyles.content}>
-        <Text style={OperarioStyles.contentText}>Tu contenido aquí...</Text>
+      <View style={styles.content}>
+        <Text style={styles.contentText}>Seleccione una opción</Text>
+        <View style={styles.containerPerfil}>
+          <Image source={require('../../assets/casco.png')}></Image> 
+        </View>
         <Boton text="Mi Perfil" apretame={() => navigation.navigate("Login")} />
+        <View style={styles.containerFormularios}>
+          <Image source={require('../../assets/formulario.png')}></Image> 
+        </View>
         <Boton text="Formularios" apretame={() => navigation.navigate("FormScreen")} />
       </View>
       <LogoutButton />

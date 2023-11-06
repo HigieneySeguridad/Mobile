@@ -18,9 +18,11 @@ const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: '#007BFF',
-    padding: 15,
+    padding: 10,
     margin: 10,
     borderRadius: 10,
+    width: 150,
+    marginLeft: 105,
   },
 });
 

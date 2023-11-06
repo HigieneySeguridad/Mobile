@@ -1,4 +1,6 @@
-export const OperarioStyles = {
+import { StyleSheet } from 'react-native'
+
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F2F2F2',
@@ -8,6 +10,7 @@ export const OperarioStyles = {
     backgroundColor: '#007BFF',
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 30,
   },
   headerText: {
     fontSize: 24,
@@ -20,7 +23,18 @@ export const OperarioStyles = {
     padding: 20,
   },
   contentText: {
-    fontSize: 18,
-    color: '#333',
+    fontSize: 24,
+    color: '#007BFF',
+    fontWeight: 'bold',
+    textAlign: 'center',
+
   },
-};
+  containerPerfil:{
+    padding:10,
+    marginLeft: 22,
+  },
+  containerFormularios:{
+    padding:10,
+    marginLeft: 22,
+  },
+});

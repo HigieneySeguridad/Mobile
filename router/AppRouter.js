@@ -23,14 +23,14 @@ export const AppRouter = () => {
     <AlertNotificationRoot>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="OperarioScreen" component={OperarioScreen} />
-        <Stack.Screen name="AdminDashboard" component={AdminDashboard} />
-        <Stack.Screen name="Login" component={Login}/>
-        <Stack.Screen name="FormScreen" component={FormScreen}/>
-        <Stack.Screen name="Form1" component={Form1}/>
-        <Stack.Screen name="Form2" component={Form2}/>
-        <Stack.Screen name="Form3" component={Form3}/>
-        <Stack.Screen name="Form4" component={Form4}/>
+        <Stack.Screen name="OperarioScreen" options={{headerShown:false}} component={OperarioScreen} />
+        <Stack.Screen name="AdminDashboard" options={{headerShown:false}} component={AdminDashboard} />
+        <Stack.Screen name="Login" options={{headerShown:false}} component={Login}/>
+        <Stack.Screen name="FormScreen" options={{headerShown:false}} component={FormScreen}/>
+        <Stack.Screen name="Form1" options={{headerShown:false}} component={Form1}/>
+        <Stack.Screen name="Form2" options={{headerShown:false}} component={Form2}/>
+        <Stack.Screen name="Form3" options={{headerShown:false}} component={Form3}/>
+        <Stack.Screen name="Form4" options={{headerShown:false}} component={Form4}/>
       </Stack.Navigator>
     </NavigationContainer>
     </AlertNotificationRoot>

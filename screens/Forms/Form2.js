@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
   },
   contenedor:{
     padding: 10,
+    top: 35,
   }
 });
 

@@ -370,6 +370,7 @@ const styles = StyleSheet.create({
   },
   contenedor:{
     padding: 10,
+    top: 35,
   },
   titulogrande:{
     fontSize: 22,
