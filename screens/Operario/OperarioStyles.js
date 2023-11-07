@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2F2F2',
+    backgroundColor: 'white',
   },
   header: {
     flex: 0.2,
@@ -31,10 +31,18 @@ export const styles = StyleSheet.create({
   },
   containerPerfil:{
     padding:10,
-    marginLeft: 22,
+    marginLeft: 30,
+    height: 200,
+    width: 300,
+    alignItems: 'center',
+    marginBottom: 15,
   },
   containerFormularios:{
     padding:10,
     marginLeft: 22,
+  },
+  imagenperfil:{
+    height: 200,
+    width: 200,
   },
 });

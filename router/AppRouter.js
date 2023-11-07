@@ -11,6 +11,7 @@ import Form1 from '../screens/Forms/Form1';
 import Form2 from '../screens/Forms/Form2';
 import Form3 from '../screens/Forms/Form3';
 import Form4 from '../screens/Forms/Form4';
+import Home from '../screens/ScreenHome/HomeScreen';
 
 const Stack = createStackNavigator();
 
@@ -22,7 +23,8 @@ export const AppRouter = () => {
   return (
     <AlertNotificationRoot>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" options={{headerShown:false}} component={Home} />
         <Stack.Screen name="OperarioScreen" options={{headerShown:false}} component={OperarioScreen} />
         <Stack.Screen name="AdminDashboard" options={{headerShown:false}} component={AdminDashboard} />
         <Stack.Screen name="Login" options={{headerShown:false}} component={Login}/>

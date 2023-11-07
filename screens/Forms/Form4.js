@@ -44,7 +44,7 @@ const style = `.m-signature-pad--footer {display: none; margin: 0px;}`;
 
   return (
 <>
-<Button title="Mostrar acuifero guarani" onPress={() => setForm1(!form1)} />     
+<Button title="Rellenar 1er campo" onPress={() => setForm1(!form1)} />     
   {form1 &&(
     <View style={styles.container}>
     <Text style={styles.titulo}> Hora </Text>
@@ -84,7 +84,7 @@ const style = `.m-signature-pad--footer {display: none; margin: 0px;}`;
 </View>
   </View>
   )}
-  <Button title="Mostrar acuifero guarani" onPress={() => setForm2(!form2)} />     
+  <Button title="Rellenar 2do campo" onPress={() => setForm2(!form2)} />     
   {form2 &&(
     <View style={styles.container}>
     <Text style={styles.titulo}> Hora </Text>
@@ -124,7 +124,7 @@ const style = `.m-signature-pad--footer {display: none; margin: 0px;}`;
 </View>
   </View>
   )}
-  <Button title="Mostrar acuifero guarani" onPress={() => setForm3(!form3)} />     
+  <Button title="Rellenar 3er campo" onPress={() => setForm3(!form3)} />     
   {form3 &&(
     <View style={styles.container}>
     <Text style={styles.titulo}> Hora </Text>
@@ -164,7 +164,7 @@ const style = `.m-signature-pad--footer {display: none; margin: 0px;}`;
 </View>
   </View>
   )}
-  <Button title="Mostrar acuifero guarani" onPress={() => setForm4(!form4)} />     
+  <Button title="Rellenar 4to campo" onPress={() => setForm4(!form4)} />     
   {form4 &&(
     <View style={styles.container}>
     <Text style={styles.titulo}> Hora </Text>
@@ -204,7 +204,7 @@ const style = `.m-signature-pad--footer {display: none; margin: 0px;}`;
 </View>
   </View>
   )}
-  <Button title="Mostrar acuifero guarani" onPress={() => setForm5(!form5)} />     
+  <Button title="Rellenar 5to campo" onPress={() => setForm5(!form5)} />     
   {form5 &&(
     <View style={styles.container}>
     <Text style={styles.titulo}> Hora </Text>
@@ -244,7 +244,7 @@ const style = `.m-signature-pad--footer {display: none; margin: 0px;}`;
 </View>
   </View>
   )}
-  <Button title="Mostrar acuifero guarani" onPress={() => setForm6(!form6)} />     
+  <Button title="Rellenar 6to campo" onPress={() => setForm6(!form6)} />     
   {form6 &&(
     <View style={styles.container}>
     <Text style={styles.titulo}> Hora </Text>

@@ -3,6 +3,7 @@ import { View, Text, Button, Alert } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
 import { styles } from './FormScreenStyles';
+import { TextInput } from "react-native-gesture-handler";
 
 const FormScreen = () => {
   const navigation = useNavigation();
@@ -32,12 +33,31 @@ const FormScreen = () => {
   };
 
   return (
+    
     <View style={styles.container}>
+      <View>
+        <Text style={styles.titulo1}> Permiso de Trabajo </Text>
+        <TextInput 
+          style={styles.input}
+          placeholder="Descripción del Trabajo"
+          placeholderTextColor="#AAAAAA"
+        />
+        <TextInput 
+          style={styles.input}
+          placeholder="N° de Personas"
+          placeholderTextColor="#AAAAAA"
+        />
+        <TextInput 
+          style={styles.input}
+          placeholder="Herramientas y Equipos"
+          placeholderTextColor="#AAAAAA"
+        />
+      </View>
       <Text>Selecciona una opción:</Text>
       <Picker
         selectedValue={selectedOption}
         onValueChange={(itemValue) => setSelectedOption(itemValue)}
-        style={{ width: 400 }}
+        style={styles.drop}
       >
         {options.map((option) => (
           <Picker.Item key={option.value} label={option.label} value={option.value} />

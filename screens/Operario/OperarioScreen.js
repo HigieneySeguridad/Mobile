@@ -60,7 +60,7 @@ export default function Home({ navigation }) {
       <View style={styles.content}>
         <Text style={styles.contentText}>Seleccione una opción</Text>
         <View style={styles.containerPerfil}>
-          <Image source={require('../../assets/casco.png')}></Image> 
+          <Image source={require('../../assets/perfil.png')} style={styles.imagenperfil}></Image> 
         </View>
         <Boton text="Mi Perfil" apretame={() => navigation.navigate("Login")} />
         <View style={styles.containerFormularios}>
