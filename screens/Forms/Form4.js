@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { Text, View, TextInput, Button, StyleSheet } from 'react-native';
 import SignatureScreen from 'react-native-signature-canvas';
+import * as FileSystem from "expo-file-system";
 
-const Form4 = ({ onOK }) => {
+const Form4 = () => {
   const [hora, setHora] = useState('');
   const [oxigeno, setOxigeno] = useState('');
   const [combustible, setCombustible] = useState('');
@@ -14,21 +15,31 @@ const Form4 = ({ onOK }) => {
   const [form4, setForm4] = useState(false);
   const [form5, setForm5] = useState(false);
   const [form6, setForm6] = useState(false);
+  const [firma,setFirma] = useState(false); 
 
-
-  const handleSubmit = () => {
+  const enviar = () => {
     console.log('Hora:', hora);
     console.log('Oxígeno:', oxigeno);
     console.log('Combustible:', combustible);
     console.log('H2S:', h2s);
     console.log('Otro:', otro);
+    console.log('Firma:', firma);
   };
 
 const ref = useRef();
 
 const handleOK = (signature) => {
-  console.log(signature);
-  onOK(signature);
+  const path = FileSystem.cacheDirectory + "FirmaAtmosfera.png";
+  FileSystem.writeAsStringAsync(
+    path,
+    signature.replace("data:image/png;base64,", ""),
+    { encoding: FileSystem.EncodingType.Base64 }
+  )
+    .then(() => FileSystem.getInfoAsync(path))
+    .then(console.log)
+    .catch(console.error);
+    console.log(signature);
+    setFirma(signature);
 };
 
 const handleClear = () => {
@@ -286,7 +297,7 @@ const style = `.m-signature-pad--footer {display: none; margin: 0px;}`;
   )}
    <Button
           title="Enviar"
-          onPress={this.handleSubmit}
+          onPress={enviar}
         />
     </>
   );
