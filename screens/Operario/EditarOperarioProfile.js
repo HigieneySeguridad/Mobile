@@ -1,32 +1,66 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
 import { useUserContext } from '../../context/UserContext';
+import { ALERT_TYPE, Dialog } from 'react-native-alert-notification';
 
 export default function EditarOperarioProfile({ navigation }) {
-  const { user, setUser } = useUserContext(); // Asegúrate de que setUser esté disponible en el contexto
-  const [nombre, setNombre] = useState(user.nombre);
+  const { user, setUser } = useUserContext();
+  const [telefono, setTelefono] = useState(`${user.telefono || ''}`);
+  const [dni, setDni] = useState(`${user.dni || ''}`);
 
   const handleGuardarCambios = async () => {
     try {
-      // Realiza una solicitud PUT al servidor para actualizar el nombre del usuario
-      const response = await fetch(`http://192.168.0.89:3001/login/${user.userId}`, {
+      const response = await fetch(`http://192.168.137.1:3001/login/${user.userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nombre }),
+        body: JSON.stringify({ telefono, dni }),
       });
 
       if (response.status === 200) {
-        // Actualización exitosa, actualiza el nombre en el contexto de usuario
-        setUser({ ...user, nombre }); // Actualiza el nombre en el estado del usuario
-        console.log('Nombre actualizado con éxito');
-        // Puedes mostrar un mensaje de éxito o realizar otras acciones
-      } else {
-        // Maneja errores aquí, muestra un mensaje de error o realiza otras acciones
+        setUser({ ...user, telefono, dni });
+
+        Dialog.show({
+          type: ALERT_TYPE.SUCCESS,
+          title: 'Éxito',
+          textBody: 'Perfil actualizado con éxito',
+          button: 'Aceptar',
+          closeOnOverlayTap: true,
+        });
+
+        console.log('Perfil actualizado con éxito');
+        navigation.navigate('OperarioProfile');
+      } else if (response.status === 401) {
+        Dialog.show({
+          type: ALERT_TYPE.DANGER,
+          title: 'ERROR',
+          textBody: 'Error al actualizar el perfil',
+          button: 'Aceptar',
+          closeOnOverlayTap: true,
+        });
+
         console.error('Error al actualizar el perfil');
+      } else {
+        Dialog.show({
+          type: ALERT_TYPE.DANGER,
+          title: 'ERROR',
+          textBody: 'Error desconocido',
+          button: 'Aceptar',
+          closeOnOverlayTap: true,
+        });
+
+        console.error('Error desconocido');
       }
     } catch (error) {
+      Dialog.show({
+        type: ALERT_TYPE.DANGER,
+        title: 'ERROR',
+        textBody: 'Error de red',
+        button: 'Aceptar',
+        closeOnOverlayTap: true,
+      });
+
       console.error('Error de red:', error);
     }
   };
@@ -34,11 +68,11 @@ export default function EditarOperarioProfile({ navigation }) {
   return (
     <View>
       <Text>Editar Perfil</Text>
-      <Text>Nombre de Usuario:</Text>
-      <TextInput
-        value={nombre}
-        onChangeText={setNombre}
-      />
+      <Text>Nombre de Usuario: {user.nombre}</Text>
+      <Text>Teléfono:</Text>
+      <TextInput value={telefono} onChangeText={setTelefono} />
+      <Text>DNI:</Text>
+      <TextInput value={dni} onChangeText={setDni} />
       <Button title="Guardar Cambios" onPress={handleGuardarCambios} />
     </View>
   );
