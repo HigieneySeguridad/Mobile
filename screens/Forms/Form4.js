@@ -29,7 +29,7 @@ const Form4 = () => {
 const ref = useRef();
 
 const handleOK = (signature) => {
-  const path = FileSystem.cacheDirectory + "FirmaAtmosfera.png";
+  const path = FileSystem.cacheDirectory + "firma.png";
   FileSystem.writeAsStringAsync(
     path,
     signature.replace("data:image/png;base64,", ""),
@@ -47,7 +47,7 @@ const handleClear = () => {
 };
 
 const handleConfirm = () => {
-  console.log("end");
+  console.log("Firma enviada");
   ref.current.readSignature();
 };
 

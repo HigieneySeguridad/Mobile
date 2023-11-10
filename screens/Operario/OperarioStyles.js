@@ -42,7 +42,8 @@ export const styles = StyleSheet.create({
     marginLeft: 22,
   },
   imagenperfil:{
-    height: 200,
-    width: 200,
+    height: 180,
+    width: 300,
+    borderRadius: 10,
   },
 });

@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
 import { styles } from './FormScreenStyles';
 import { TextInput } from "react-native-gesture-handler";
+import SignatureScreen from 'react-native-signature-canvas';
 
 const FormScreen = () => {
   const navigation = useNavigation();

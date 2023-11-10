@@ -35,7 +35,7 @@ export default function Home({ navigation }) {
  
  */
 import React from 'react';
-import { Text, View, Image, } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { useUserContext } from '../../context/UserContext';
 import LogoutButton from '../../components/LogoutButton';
 import Boton from '../../components/boton';
@@ -59,13 +59,13 @@ export default function Home({ navigation }) {
       </View>
       <View style={styles.content}>
         <Text style={styles.contentText}>Seleccione una opción</Text>
-        <View style={styles.containerPerfil}>
-          <Image source={require('../../assets/perfil.png')} style={styles.imagenperfil}></Image> 
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")} style={styles.containerPerfil}>
+          <Image source={require('../../assets/ftperfil.png')} style={styles.imagenperfil}></Image>
+        </TouchableOpacity>
         <Boton text="Mi Perfil" apretame={() => navigation.navigate("Login")} />
-        <View style={styles.containerFormularios}>
-          <Image source={require('../../assets/formulario.png')}></Image> 
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate("FormScreen")} style={styles.containerFormularios}>
+          <Image source={require('../../assets/formperf.png')}></Image>
+        </TouchableOpacity>
         <Boton text="Formularios" apretame={() => navigation.navigate("FormScreen")} />
       </View>
       <LogoutButton />
