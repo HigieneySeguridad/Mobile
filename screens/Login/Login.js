@@ -39,7 +39,7 @@ export default function Login() {
     if (respuesta.status === 200) {
       const userData = await respuesta.json();
 
-      console.log(userData);
+      console.log('Usuario ID:', userData.userId,userData.nombre); // Imprimir el ID del usuario
       // Realiza la autenticación y llama a setUser con la información del usuario
       setUser(userData);
 

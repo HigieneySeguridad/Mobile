@@ -6,10 +6,14 @@ export const useUserContext = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({
-    role: ""
+    _id: '', // Agregamos el campo _id
+    role: '',
+    nombre: '',
   });
   const logout = () => {
+    
     setUser(null);}
+    
 
   return (
     <UserContext.Provider value={{ user, setUser, logout }}>
