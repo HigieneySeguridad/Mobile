@@ -12,6 +12,8 @@ import Form2 from '../screens/Forms/Form2';
 import Form3 from '../screens/Forms/Form3';
 import Form4 from '../screens/Forms/Form4';
 import Home from '../screens/ScreenHome/HomeScreen';
+import OperarioProfile from '../screens/Operario/OperarioProfile';
+import EditarOperarioProfile from '../screens/Operario/EditarOperarioProfile';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +35,8 @@ export const AppRouter = () => {
         <Stack.Screen name="Form2" options={{headerShown:false}} component={Form2}/>
         <Stack.Screen name="Form3" options={{headerShown:false}} component={Form3}/>
         <Stack.Screen name="Form4" options={{headerShown:false}} component={Form4}/>
+        <Stack.Screen name="OperarioProfile" options={{headerShown:false}} component={OperarioProfile}/>
+        <Stack.Screen name="EditarOperarioProfile" options={{headerShown:false}} component={EditarOperarioProfile}/>
       </Stack.Navigator>
     </NavigationContainer>
     </AlertNotificationRoot>

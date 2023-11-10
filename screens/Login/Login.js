@@ -28,7 +28,7 @@ export default function Login() {
       password,
     };
 
-    const respuesta = await fetch('http://192.168.217.239:3000/login', {
+    const respuesta = await fetch('http://192.168.0.89:3001/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export default function Login() {
     if (respuesta.status === 200) {
       const userData = await respuesta.json();
 
-      console.log(userData);
+      console.log('Usuario ID:', userData.userId,userData.nombre); // Imprimir el ID del usuario
       // Realiza la autenticación y llama a setUser con la información del usuario
       setUser(userData);
 
