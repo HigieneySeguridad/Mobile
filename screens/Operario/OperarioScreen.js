@@ -24,14 +24,12 @@ export default function Home({ navigation }) {
       </View>
       <View style={styles.content}>
         <Text style={styles.contentText}>Seleccione una opción</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")} style={styles.containerPerfil}>
-          <Image source={require('../../assets/ftperfil.png')} style={styles.imagenperfil}></Image>
+        <TouchableOpacity onPress={() => navigation.navigate("OperarioProfile")} style={styles.containerPerfil}>
+          <Image source={require('../../assets/perfilnuevo.png')} style={styles.imagenperfil}></Image>
         </TouchableOpacity>
-        <Boton text="Mi Perfil" apretame={() => navigation.navigate("Login")} />
         <TouchableOpacity onPress={() => navigation.navigate("FormScreen")} style={styles.containerFormularios}>
-          <Image source={require('../../assets/formperf.png')}></Image>
+          <Image source={require('../../assets/formularionuevo.png')} style={styles.imagenformulario}></Image>
         </TouchableOpacity>
-        <Boton text="Formularios" apretame={() => navigation.navigate("FormScreen")} />
       </View>
       <LogoutButton />
     </View>

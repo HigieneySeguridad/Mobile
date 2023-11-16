@@ -1,15 +1,21 @@
-import React from 'react';
-import { Button, TextInput, View, Image, Text } from 'react-native';
+import React, { useState } from 'react';
+import { Button, TextInput, View, Image, Text, TouchableOpacity } from 'react-native';
 import { useUserContext } from '../../context/UserContext';
 import { useNavigation } from '@react-navigation/native';
 import { ALERT_TYPE, Dialog } from 'react-native-alert-notification';
+import Icon from 'react-native-vector-icons/FontAwesome'; // Asegúrate de instalar react-native-vector-icons
 import { styles } from './LoginStyles'; // Importa el objeto de estilos
 
 export default function Login() {
   const { setUser } = useUserContext();
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigation = useNavigation();
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const Ingresar = async () => {
     if (username.trim() === '' || password.trim() === '') {
@@ -28,7 +34,7 @@ export default function Login() {
       password,
     };
 
-    const respuesta = await fetch('http://192.168.217.81:3000/login', {
+    const respuesta = await fetch('http://192.168.56.1:3000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -97,13 +103,19 @@ export default function Login() {
         onChangeText={setUsername}
         value={username}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Contraseña"
-        placeholderTextColor="#AAAAAA"
-        onChangeText={setPassword}
-        value={password}
-      />
+      <View style={styles.passwordContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Contraseña"
+          placeholderTextColor="#AAAAAA"
+          onChangeText={setPassword}
+          value={password}
+          secureTextEntry={!showPassword}
+        />
+        <TouchableOpacity onPress={toggleShowPassword} style={styles.eyeIconContainer}>
+          <Icon name={showPassword ? 'eye' : 'eye-slash'}/>
+        </TouchableOpacity>
+      </View>
       <Button
         title="Iniciar sesión"
         onPress={Ingresar}

@@ -29,10 +29,10 @@ const Form4 = () => {
 const ref = useRef();
 
 const handleOK = (signature) => {
-  const path = FileSystem.cacheDirectory + "firma.png";
+  const path = FileSystem.documentDirectory + "firma.png";
   FileSystem.writeAsStringAsync(
     path,
-    signature.replace("data:image/png;base64,", ""),
+    signature.split("data:image/png;base64,", ""),
     { encoding: FileSystem.EncodingType.Base64 }
   )
     .then(() => FileSystem.getInfoAsync(path))

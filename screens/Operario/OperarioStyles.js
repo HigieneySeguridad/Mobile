@@ -36,14 +36,25 @@ export const styles = StyleSheet.create({
     width: 300,
     alignItems: 'center',
     marginBottom: 15,
+    top: 50,
   },
   containerFormularios:{
     padding:10,
-    marginLeft: 22,
+    marginLeft: 30,
+    height: 200,
+    width: 300,
+    alignItems: 'center',
+    marginBottom: 15,
+    top: 80,
   },
   imagenperfil:{
     height: 180,
     width: 300,
     borderRadius: 10,
   },
+  imagenformulario:{
+    height: 180,
+    width: 300,
+    borderRadius: 10,
+  }
 });

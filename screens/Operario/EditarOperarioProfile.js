@@ -10,7 +10,7 @@ export default function EditarOperarioProfile({ navigation }) {
 
   const handleGuardarCambios = async () => {
     try {
-      const response = await fetch(`http://192.168.217.81:3000/login/${user.userId}`, {
+      const response = await fetch(`http://192.168.56.1:3000/login/${user.userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
