@@ -17,6 +17,7 @@ export default function PerfilScreen() {
       <Text>Nro Telefonico: {user.telefono}</Text>
       
       <Button title="Editar" onPress={() => navigation.navigate('EditarOperarioProfile')} />
+      <Button title="Volver" onPress={() => navigation.navigate('OperarioScreen')} />
 
     </View>
   );
