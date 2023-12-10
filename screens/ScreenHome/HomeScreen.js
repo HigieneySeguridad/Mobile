@@ -9,10 +9,12 @@ const HomeScreen = ({ navigation }) => {
            <Image source={require('../../assets/home.png')} style={styles.imagen}></Image> 
         </View>
       <Text style={styles.title}> POLOSEG </Text>
-      <Button
+      <View style={styles.boton}>
+      <Button 
         title="Iniciar Sesion"
         onPress={() => navigation.navigate('Login')}
       />
+      </View>
     </View>
   );
 };

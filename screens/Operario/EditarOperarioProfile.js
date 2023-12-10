@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useUserContext } from '../../context/UserContext';
 import { ALERT_TYPE, Dialog } from 'react-native-alert-notification';
+import { styles } from '../../screens/Operario/EditarOperarioProfileStyles'
 
 export default function EditarOperarioProfile({ navigation }) {
   const { user, setUser } = useUserContext();
@@ -10,7 +11,7 @@ export default function EditarOperarioProfile({ navigation }) {
 
   const handleGuardarCambios = async () => {
     try {
-      const response = await fetch(`http://192.168.56.1:3000/login/${user.userId}`, {
+      const response = await fetch(`http://192.168.0.24:3000/login/${user.userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -66,14 +67,24 @@ export default function EditarOperarioProfile({ navigation }) {
   };
 
   return (
-    <View>
-      <Text>Editar Perfil</Text>
-      <Text>Nombre de Usuario: {user.nombre}</Text>
-      <Text>Teléfono:</Text>
-      <TextInput value={telefono} onChangeText={setTelefono} />
-      <Text>DNI:</Text>
-      <TextInput value={dni} onChangeText={setDni} />
-      <Button title="Guardar Cambios" onPress={handleGuardarCambios} />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+      <View style={styles.ContPerfil}>
+      <Text style={styles.TextPerfil}> Editar Perfil </Text>
+      </View>
+      <Text style={styles.PerfilUsuario}> Nombre de Usuario </Text>
+      <Text style={styles.ContNombre}> {user.nombre} </Text>
+      <Text style={styles.ContDNI}> DNI </Text>
+      <TextInput style={styles.DNI} value={dni} onChangeText={setDni} />
+      <Text style={styles.ContTelefono}> Nro Telefonico </Text>
+      <TextInput style={styles.Telefono} value={telefono} onChangeText={setTelefono} />
+
+      <TouchableOpacity style={styles.Btn1} onPress={handleGuardarCambios}>
+       <Text style={styles.BtnText1}> Guardar </Text> 
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.Btn2} onPress={() => navigation.navigate('OperarioProfile')}>
+        <Text style={styles.BtnText2}> Volver </Text>
+      </TouchableOpacity>
+
     </View>
   );
 }

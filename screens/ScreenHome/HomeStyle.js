@@ -23,4 +23,17 @@ export const styles = StyleSheet.create({
         width: 380,
         height: 350,
       },
+      boton:{
+        color: 'white',
+      fontSize: 18,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      backgroundColor: '#007BFF',
+      padding: 10,
+      margin: 10,
+      borderRadius: 10,
+      width: 150,
+      marginLeft: 10,
+      },
+    
   });

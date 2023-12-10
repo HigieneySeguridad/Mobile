@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Button, Alert } from "react-native";
+import { View, Text, Button, TouchableOpacity } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
 import { styles } from './FormScreenStyles';
@@ -12,7 +12,6 @@ const FormScreen = () => {
     { label: 'Permiso de trabajo en frio', value: 'Form1' },
     { label: 'Permiso de trabajo en caliente', value: 'Form2' },
     { label: 'Permiso de trabajo en espacio confinado', value: 'Form3' },
-    { label: 'Prueba de atmosfera', value: 'Form4' },  
   ];
 
   const [selectedOption, setSelectedOption] = useState(options[0].value);
@@ -41,17 +40,17 @@ const FormScreen = () => {
         <TextInput 
           style={styles.input}
           placeholder="Descripción del Trabajo"
-          placeholderTextColor="#AAAAAA"
+          placeholderTextColor="black"
         />
         <TextInput 
           style={styles.input}
           placeholder="N° de Personas"
-          placeholderTextColor="#AAAAAA"
+          placeholderTextColor="black"
         />
         <TextInput 
           style={styles.input}
           placeholder="Herramientas y Equipos"
-          placeholderTextColor="#AAAAAA"
+          placeholderTextColor="black"
         />
       </View>
       <Text>Selecciona una opción:</Text>
@@ -68,6 +67,10 @@ const FormScreen = () => {
         title="Ir a la opción seleccionada"
         onPress={navigateToSelectedScreen}
       />
+      <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('OperarioScreen')}>
+        <Text style={styles.btnText}> Volver </Text>
+      </TouchableOpacity>
+
     </View>
   );
 };

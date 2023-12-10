@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { ALERT_TYPE, Dialog } from 'react-native-alert-notification';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Asegúrate de instalar react-native-vector-icons
 import { styles } from './LoginStyles'; // Importa el objeto de estilos
+import Boton from '../../components/boton'; 
 
 export default function Login() {
   const { setUser } = useUserContext();
@@ -34,7 +35,7 @@ export default function Login() {
       password,
     };
 
-    const respuesta = await fetch('http://192.168.56.1:3000/login', {
+    const respuesta = await fetch('http://192.168.0.24:3000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -116,7 +117,7 @@ export default function Login() {
           <Icon name={showPassword ? 'eye' : 'eye-slash'}/>
         </TouchableOpacity>
       </View>
-      <Button
+      <Button style={styles.btn}
         title="Iniciar sesión"
         onPress={Ingresar}
       />
