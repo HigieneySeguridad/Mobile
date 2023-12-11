@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { View, Text, Button, TouchableOpacity } from "react-native";
+import { View, Text, Button, TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
 import { styles } from './FormScreenStyles';
 import { TextInput } from "react-native-gesture-handler";
-import SignatureScreen from 'react-native-signature-canvas';
 
 const FormScreen = () => {
   const navigation = useNavigation();
@@ -15,25 +14,28 @@ const FormScreen = () => {
   ];
 
   const [selectedOption, setSelectedOption] = useState(options[0].value);
-/*   const navigateToSelectedScreen = () => {
-    const selectedScreen = options.find((option) => option.value === selectedOption);
-    if (selectedScreen) {
-      // Simplemente muestra una alerta con el nombre de la opción seleccionada
-      Alert.alert('Opción seleccionada', selectedScreen.label);
-    } */
 
   const navigateToSelectedScreen = () => {
-    navigation.navigate(selectedOption);  // Utiliza el valor seleccionado directamente
+    const selectedScreen = options.find((option) => option.value === selectedOption);
+    if (selectedScreen) {
+      // Muestra una alerta con el nombre de la opción seleccionada
+      Alert.alert('Estas por entrar a', selectedScreen.label, [
+        { text: 'OK', onPress: () => navigation.navigate(selectedScreen.value) },
+      ]);
+    }
+  };
 
-    // Opcional: Puedes verificar si el valor es válido antes de navegar
-    // const selectedScreen = options.find((option) => option.value === selectedOption);
-    // if (selectedScreen) {
-    //   navigation.navigate(selectedScreen.value);
-    // }
+  const handleEnviar = () => {
+    // Aquí puedes realizar acciones adicionales antes de mostrar la alerta
+    // ...
+
+    // Muestra la alerta de "Enviado"
+    Alert.alert('Enviado', 'El formulario ha sido enviado correctamente.', [
+      { text: 'OK', onPress: () => navigation.navigate('OperarioScreen') }, // Reemplaza 'OtraPagina' con el nombre de la página a la que quieras redirigirte
+    ]);
   };
 
   return (
-    
     <View style={styles.container}>
       <View>
         <Text style={styles.titulo1}> Permiso de Trabajo </Text>
@@ -67,15 +69,16 @@ const FormScreen = () => {
         title="Ir a la opción seleccionada"
         onPress={navigateToSelectedScreen}
       />
-      <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('OperarioScreen')}>
-        <Text style={styles.btnText}> Volver </Text>
+      
+      <TouchableOpacity TouchableOpacity style={styles.btn2} onPress={handleEnviar}>
+        <Text style={styles.btnText2}> Enviar </Text>
       </TouchableOpacity>
-
+      
+      <TouchableOpacity style={styles.btn1} onPress={() => navigation.navigate('OperarioScreen')}>
+        <Text style={styles.btnText1}> Volver </Text>
+      </TouchableOpacity>
     </View>
   );
 };
-
-
-
 
 export default FormScreen;

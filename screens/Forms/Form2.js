@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { ScrollView, View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { CheckBox, Button } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 
-class Form2 extends Component {
-  state = {
+const Form2 = () => {
+  const [checkboxState, setCheckboxState] = useState({
     checkbox21: false,
     checkbox22: false,
     checkbox23: false,
@@ -21,142 +22,169 @@ class Form2 extends Component {
     checkbox35: false,
     checkbox36: false,
     checkbox37: false,
+    // ... (otros checkboxes)
+  });
+
+  const navigation = useNavigation();
+
+  const handleCheckboxPress = (checkboxName) => {
+    setCheckboxState((prevState) => ({
+      ...prevState,
+      [checkboxName]: !prevState[checkboxName],
+    }));
   };
 
-  render() {
-    return (
-      <ScrollView>
-        <View style={styles.contenedor}>
-          <Text style={styles.titulogrande1}>
-            Peligros y riesgos de trabajo
-          </Text>
-          <View style={styles.CheckBoxCont}>
+  const handleSubmit = () => {
+    // Aquí puedes realizar acciones basadas en los valores de las casillas de verificación
+    console.log('Estado de las casillas de verificación:', checkboxState);
+
+    // Después de manejar la lógica del envío, vuelve a la página anterior
+    navigation.goBack();
+  };
+
+  return (
+    <ScrollView>
+      <View style={styles.contenedor}>
+        <Text style={styles.titulogrande1}>
+          Peligros y riesgos de trabajo
+        </Text>
+        <View style={styles.CheckBoxCont}>
           <CheckBox
             title="LLama abierta o arco."
-            checked={this.state.checkbox21}
-            onPress={() => this.setState({ checkbox21: !this.state.checkbox21 })}
+            checked={checkboxState.checkbox21}
+            onPress={() => handleCheckboxPress('checkbox21')}
           />
-          <CheckBox
+           <CheckBox
             title="Acceso al sitio."
-            checked={this.state.checkbox22}
-            onPress={() => this.setState({ checkbox22: !this.state.checkbox22 })}
+            checked={checkboxState.checkbox22}
+            onPress={() => handleCheckboxPress('checkbox22')}
           />
-          <CheckBox
+           <CheckBox
             title="Sustancias químicas."
-            checked={this.state.checkbox23}
-            onPress={() => this.setState({ checkbox23: !this.state.checkbox23 })}
+            checked={checkboxState.checkbox23}
+            onPress={() => handleCheckboxPress('checkbox23')}
           />
-          <CheckBox
+           <CheckBox
             title="Trabajo en equipos funcionando."
-            checked={this.state.checkbox24}
-            onPress={() => this.setState({ checkbox24: !this.state.checkbox24 })}
+            checked={checkboxState.checkbox24}
+            onPress={() => handleCheckboxPress('checkbox24')}
           />
-          <CheckBox
+           <CheckBox
             title="Trabajo en altura."
-            checked={this.state.checkbox25}
-            onPress={() => this.setState({ checkbox25: !this.state.checkbox25 })}
+            checked={checkboxState.checkbox25}
+            onPress={() => handleCheckboxPress('checkbox25')}
           />
-          <CheckBox
+           <CheckBox
             title="Uso de herramientas eléctricas."
-            checked={this.state.checkbox26}
-            onPress={() => this.setState({ checkbox26: !this.state.checkbox26 })}
+            checked={checkboxState.checkbox26}
+            onPress={() => handleCheckboxPress('checkbox26')}
           />
-          <CheckBox
+           <CheckBox
             title="Uso de herramientas neumática."
-            checked={this.state.checkbox27}
-            onPress={() => this.setState({ checkbox27: !this.state.checkbox27 })}
+            checked={checkboxState.checkbox27}
+            onPress={() => handleCheckboxPress('checkbox27')}
           />
-          <CheckBox
+           <CheckBox
             title="Potencial de derrame."
-            checked={this.state.checkbox28}
-            onPress={() => this.setState({ checkbox28: !this.state.checkbox28 })}
+            checked={checkboxState.checkbox28}
+            onPress={() => handleCheckboxPress('checkbox28')}
           />
-          <CheckBox
+           <CheckBox
             title="Sistema bajo presión."
-            checked={this.state.checkbox29}
-            onPress={() => this.setState({ checkbox29: !this.state.checkbox29 })}
+            checked={checkboxState.checkbox29}
+            onPress={() => handleCheckboxPress('checkbox29')}
           />
-          </View>
-           <Text style={styles.titulogrande2}>
-            Precauciones a tomar
-          </Text>
-          <View style={styles.CheckBoxCont}>
-          <CheckBox
-          title="LLenar equipo con agua."
-            checked={this.state.checkbox30}
-            onPress={() => this.setState({ checkbox30: !this.state.checkbox30 })}
-            />
-          <CheckBox
+        </View>
+        <Text style={styles.titulogrande2}>Precauciones a tomar</Text>
+        <View style={styles.CheckBoxCont}>
+        <CheckBox
+            title="LLenar equipo con agua."
+            checked={checkboxState.checkbox30}
+            onPress={() => handleCheckboxPress('checkbox30')}
+          />
+           <CheckBox
             title="Equipo/área libre de combustible."
-            checked={this.state.checkbox31}
-            onPress={() => this.setState({ checkbox31: !this.state.checkbox31 })}
+            checked={checkboxState.checkbox21}
+            onPress={() => handleCheckboxPress('checkbox31')}
           />
-          <CheckBox
+           <CheckBox
             title="Comunicación permanente."
-            checked={this.state.checkbox32}
-            onPress={() => this.setState({ checkbox32: !this.state.checkbox32 })}
+            checked={checkboxState.checkbox21}
+            onPress={() => handleCheckboxPress('checkbox32')}
           />
-          <CheckBox
+           <CheckBox
             title="Protección de incendio."
-            checked={this.state.checkbox33}
-            onPress={() => this.setState({ checkbox33: !this.state.checkbox33 })}
+            checked={checkboxState.checkbox21}
+            onPress={() => handleCheckboxPress('checkbox33')}
           />
-          <CheckBox
+           <CheckBox
             title="Aislamiento Mecánico."
-            checked={this.state.checkbox34}
-            onPress={() => this.setState({ checkbox34: !this.state.checkbox34 })}
+            checked={checkboxState.checkbox21}
+            onPress={() => handleCheckboxPress('checkbox34')}
           />
-          <CheckBox
+           <CheckBox
             title="Aislamiento Eléctrico."
-            checked={this.state.checkbox35}
-            onPress={() => this.setState({ checkbox35: !this.state.checkbox35 })}
+            checked={checkboxState.checkbox21}
+            onPress={() => handleCheckboxPress('checkbox35')}
           />
-          <CheckBox
+           <CheckBox
             title="Desprezurización y drenaje."
-            checked={this.state.checkbox36}
-            onPress={() => this.setState({ checkbox36: !this.state.checkbox36 })}
+            checked={checkboxState.checkbox21}
+            onPress={() => handleCheckboxPress('checkbox36')}
           />
-          <CheckBox
+           <CheckBox
             title="Señalización de área."
-            checked={this.state.checkbox37}
-            onPress={() => this.setState({ checkbox37: !this.state.checkbox37 })}
+            checked={checkboxState.checkbox21}
+            onPress={() => handleCheckboxPress('checkbox37')}
           />
-          <Button
-          title="Enviar"
-          onPress={this.handleSubmit}
-        />
         </View>
-        </View>
-      </ScrollView>
-    );
-  }
-}
+        <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('FormScreen')}>
+        <Text style={styles.btnText}> Guardar </Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  );
+};
 
 const styles = StyleSheet.create({
   CheckBoxCont: {
-    width: 394 ,
-    marginLeft: -10 ,
+    width: 394,
+    marginLeft: -10,
   },
-  titulogrande1:{
+  titulogrande1: {
     fontSize: 25,
     fontWeight: 'bold',
     backgroundColor: 'red',
     padding: 10,
     textAlign: 'center',
-    color: 'white' ,
+    color: 'white',
   },
-  titulogrande2:{
+  titulogrande2: {
     fontSize: 25,
     fontWeight: 'bold',
     backgroundColor: 'green',
     padding: 10,
     textAlign: 'center',
-    color: 'white' ,  
+    color: 'white',
   },
-  contenedor:{
+  contenedor: {
     padding: 10,
     top: 35,
-  }
+  },
+  btnText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center', 
+  },
+  btn: {
+    backgroundColor: '#007BFF',
+    padding: 10,
+    margin: 20,
+    borderRadius: 10,
+    width: 335,
+    top: -13,
+  },
 });
 
 export default Form2;

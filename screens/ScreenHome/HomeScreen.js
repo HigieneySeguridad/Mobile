@@ -10,9 +10,7 @@ const HomeScreen = ({ navigation }) => {
         </View>
       <Text style={styles.title}> POLOSEG </Text>
       <View style={styles.boton}>
-      <Button 
-        title="Iniciar Sesion"
-        onPress={() => navigation.navigate('Login')}
+      <Button title="Iniciar Sesion" onPress={() => navigation.navigate('Login')}
       />
       </View>
     </View>

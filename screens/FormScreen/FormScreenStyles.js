@@ -40,13 +40,29 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginLeft: 5,
   },
-  btnText: {
+  btnText1: {
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center', 
   },
-  btn: {
+  btn1: {
+    backgroundColor: 'black',
+    padding: 10,
+    margin: 10,
+    borderRadius: 10,
+    width: 150,
+    marginLeft: 8,
+    top: 70 ,
+
+  },
+  btnText2: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center', 
+  },
+  btn2: {
     backgroundColor: 'black',
     padding: 10,
     margin: 10,
